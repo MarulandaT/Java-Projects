@@ -27,8 +27,8 @@ public class Semana3 {
         7. Calcular raices de polinomios de segundo grado
         */
         
-        //Determine el caso;
-        int caso=1;
+        //Determine el caso a continuacion:
+        int caso=7;
         
         
         switch (caso){
@@ -47,16 +47,20 @@ public class Semana3 {
             case 2:
             {
                 //variable a la que deseo encontrarle el factorial
-                int x=5;
+                int x=10;
                 System.out.println("Factorial de " + x + ":");
                 //el factorial por definicion f(0)=1
                 int factorial=1;
                 
-                while(x>0){
-                    factorial=factorial*x;
-                    x--;
-                }  
+                if(x>=0){
+                    while(x>0){
+                        factorial=factorial*x;
+                        x--;
+                    }  
                 System.out.println(factorial);
+                } else {
+                    System.out.println("No es posible calcular el factorial de un negativo");
+                }
                 break;
             }
             case 3:
@@ -68,7 +72,8 @@ public class Semana3 {
                 int fib1=1;
                 //acumulador para determinar la sumatoria de la serie:
                 int aux=0;
-                
+                if (x>=0)
+                {
                 System.out.println("La serie fibonacci esta dada por:");
                 System.out.println("0");
                 System.out.println(fib0);
@@ -80,23 +85,31 @@ public class Semana3 {
                 }
                 System.out.println("El resultado es:");
                 System.out.println(aux+1);
+                } else 
+                {
+                    System.out.println("No se puede calcular el fibonacci de un negativo");
+                }
                 break;
             }
             case 4:
             {
                 //variable base para la potenciacion
-                int n=4;
+                int n=50;
                 //potencia
-                int m=3;
+                int m=2;
                 //acumulador
                 int resultado=1;
                 
                 System.out.println(n + "^" + m + ":");
+                if(n!=0 || m!=0){
                 while(m>0){
                     resultado=resultado*n;
                     m--;
                 }
                 System.out.println(resultado);
+                } else {
+                    System.out.println("La operacion es una inderterminacion");
+                }
                 break;
             }
             case 5:
@@ -108,6 +121,7 @@ public class Semana3 {
                 //numero de veces que podria dividirse el numero, en el ciclo
                 int cont=0;
                 
+                if(x>0){
                 while(cont<3 && comp>=1){
                     if((x % comp) == 0){
                         cont++;
@@ -121,6 +135,9 @@ public class Semana3 {
                 } else {
                     System.out.println(x + " No es primo");
                 }
+                }else {
+                    System.out.println("Los # primos son positivos, pertenecen a los naturales");
+                }
                 break;
             }
             case 6:
@@ -131,10 +148,14 @@ public class Semana3 {
                 int semanas;
                 int dias;
                 int auxhoras;
+                if(hrs>=0){
                 semanas = hrs/168;
                 dias = (hrs -(semanas * 168))/24;
                 auxhoras = hrs -(semanas*168) -(dias *24);
                 System.out.println(hrs + " horas " + " = " + semanas + " semanas " + dias + " dias " + auxhoras + " horas ");
+                } else {
+                    System.out.println("Ingrese un valor positivo");
+                }
                 break;
             }
             case 7:
@@ -143,14 +164,18 @@ public class Semana3 {
                 double a=1,b=2,c=1;
                 //variables para los resultados
                 double x1,x2;
-                if((Math.sqrt((b*b)-(4*a*c)))>=0){
+                
+                if((Math.sqrt((b*b)-(4*a*c)))==0){
                     x1=(-b+Math.sqrt((b*b)-(4*a*c)))/(2*a);
-                    x2=(-b-Math.sqrt((b*b)-(4*a*c)))/(2*a);
-                    System.out.println("Raiz 1: x=" + x1);
-                    System.out.println("Raiz 2: x=" + x2);
-                } else {
-                    System.out.println("Raices imaginarias");
-                }
+                    System.out.println("Unica Raiz: x=" + x1);
+                        }else if((Math.sqrt((b*b)-(4*a*c)))>=0){
+                        x1=(-b+Math.sqrt((b*b)-(4*a*c)))/(2*a);
+                        x2=(-b-Math.sqrt((b*b)-(4*a*c)))/(2*a);
+                        System.out.println("Raiz 1: x=" + x1);
+                        System.out.println("Raiz 2: x=" + x2);
+                        } else {
+                            System.out.println("Raices imaginarias");
+                        }
                 break;
             }
             default:

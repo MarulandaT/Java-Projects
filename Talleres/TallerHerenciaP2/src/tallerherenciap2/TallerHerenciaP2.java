@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package tallerherenciap2;
+import InterfazClases.*;
 
 /**
  *
@@ -16,6 +17,12 @@ public class TallerHerenciaP2 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Pila p = new Pila(20);
+        PruebaPila.Rellenar(p);
+        System.out.println("Su pila:    " + p );
+        PruebaPila.ImprimiryVaciar(p);
+        System.out.println("La nueva pila:  " + p);
+        
     }
     
 }

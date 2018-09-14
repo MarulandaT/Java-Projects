@@ -5,21 +5,19 @@
  */
 package InterfazClases;
 import java.util.NoSuchElementException;
+import java.util.Vector;
 
 /**
  *
  * @author l_mar
  */
 public class Pila implements ColeccionInterfaz{
-    private Object[] array;
+    //Definir un elemento dinamico para que cumpla la funcion de pila 
+    //Definir todos los atributos
+    private Vector<Object> array = new Vector<Object>();
     private int contador;
     
-    public Pila(int capacidad)
-    {
-        this.array=new Object[capacidad];
-        this.contador=0;
-    }
-    
+    //Implementar los metodos de Coleccion
     @Override
     public boolean estaVacia(){
         return this.contador==0;
@@ -28,27 +26,24 @@ public class Pila implements ColeccionInterfaz{
     @Override
     public boolean anhadir(Object objeto)
     {
-        if(this.array.length == this.contador)
-        {
-            System.out.println("No se puede añadir elemento, lista llena");
-            return false;
-        } else {
-            this.array[this.contador]=objeto;
-            this.contador++;
-            return true;
-        }
+        
+        this.array.addElement(objeto);
+        this.contador++;
+        return true;
+        
     }
     
     @Override
-    public Object extraer(){
+    public Object Extraer(){
+        
         if(estaVacia())
         {
             throw new NoSuchElementException();
         } else {
             this.contador--;
-            return this.array[this.contador];
-            
+            return this.array.elementAt(contador);
         }
+        
     }
     
     @Override 
@@ -58,8 +53,7 @@ public class Pila implements ColeccionInterfaz{
             throw new NoSuchElementException();
         } else 
         {
-            return this.array[this.contador-1];
+            return this.array.elementAt(this.contador-1);
         }
     }
-    
 }

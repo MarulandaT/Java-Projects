@@ -10,7 +10,8 @@ package clases;
  * @author l_mar
  */
 public class ListaMultimedia {
-        
+    
+    //Atributos de clase
     public Multimedia [] List;
     public int contador = 0;
 
@@ -18,6 +19,7 @@ public class ListaMultimedia {
     public int tamanho;
     public int anhadidos;
     
+    //Constructor
     public ListaMultimedia(int Tamanho)
     {
         this.tamanho=Tamanho;
@@ -26,6 +28,7 @@ public class ListaMultimedia {
         this.anhadidos = 0;
     }
     
+    //Encontrar el numero de elementos que hay en lista
     public int Size()
     {
         this.contador=0;
@@ -39,7 +42,7 @@ public class ListaMultimedia {
         return this.contador;
     }
     
-    
+    //Determinar si tiene espacio
     private boolean sinEspacio()
     {
         if(Size()==this.tamanho)
@@ -50,6 +53,7 @@ public class ListaMultimedia {
         }
     }
     
+    //Añadir elementos de tipo multimedia a la lista
     public boolean add(Multimedia objeto)
     {
         if(sinEspacio())
@@ -64,11 +68,13 @@ public class ListaMultimedia {
         }
     }
     
+    //Obtener  el elemento que esta en determinada posición 
     public Multimedia get(int posicion)
     {
         return this.List[posicion];
     }
     
+    //Sobreescribir el metodo toString definido previamente en las otras clases
     @Override
     public String toString()
     {

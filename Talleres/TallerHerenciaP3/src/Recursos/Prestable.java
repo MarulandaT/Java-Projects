@@ -10,6 +10,7 @@ package Recursos;
  * @author l_mar
  */
 public interface Prestable {
+    //Definir los metodos para que no sean alterados en otras funciones 
     public void prestar();
     public void devolver();
     public boolean prestado();

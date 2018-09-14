@@ -10,13 +10,16 @@ package Recursos;
  * @author l_mar
  */
 public class Libro extends Material implements Prestable{
-
+    //Creacion de atributos
     public boolean Prestado;
+    
+    //Definición del constructor
     public Libro(String cod, String titulo, int year) {
         super(cod, titulo, year);
         this.Prestado = false;
     }
 
+    //Implementacion de los metodos que define la interfaz
     @Override
     public void prestar() {
         this.Prestado = true;

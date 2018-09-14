@@ -11,15 +11,18 @@ package clases;
  */
 public class Pelicula extends Multimedia {
     
+    //Atributos de clase
     public String actorPrincipal="Unknow";
     public String actrizPrincipal="Unknow";
 
+    //Constructor de clase
     public Pelicula(String titulo, String autor, TipoFormato formato, int Duracion, String Actor, String Actriz) {
         super(titulo, autor, formato, Duracion);
         this.actorPrincipal = Actor;
         this.actrizPrincipal = Actriz;
     }
     
+    //Constructor cuidando si los atributos de actor o actriz estan vacios
     public Pelicula(String titulo, String autor, TipoFormato formato, int Duracion, String Actor, int aux)
     {
         super(titulo,autor,formato,Duracion);
@@ -33,7 +36,7 @@ public class Pelicula extends Multimedia {
         }
     }
     
-    
+    //Metodos para obtener los diferentes datos
     public String getActor()
     {
         return this.actorPrincipal;
@@ -44,6 +47,7 @@ public class Pelicula extends Multimedia {
         return this.actrizPrincipal;
     }
     
+    //Metodo toString
     @Override 
     public String toString ()
     {

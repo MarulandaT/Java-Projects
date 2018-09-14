@@ -10,14 +10,16 @@ package Recursos;
  * @author l_mar
  */
 public class Revista extends Material{
-    
+    //Atributos
     private int Numero;
+    
+    //Constructor
     public Revista(String cod, String titulo, int year, int numero) {
         super(cod, titulo, year);
         this.Numero = numero;
     }
     
-    
+    //Metodo toString
     @Override
     public String toString()
     {

@@ -10,5 +10,6 @@ package clases;
  * @author l_mar
  */
 public enum TipoFormato {
+    //Para restringir en la creacion de elementos que sean de uno de estos tipos 
     wav,mp3,midi,avi,mov,pmg,cdAudio,dvd
 }

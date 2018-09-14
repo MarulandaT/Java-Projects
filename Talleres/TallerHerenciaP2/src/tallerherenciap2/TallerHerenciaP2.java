@@ -17,10 +17,20 @@ public class TallerHerenciaP2 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Pila p = new Pila(20);
+        
+        //Crear la pila 
+        Pila p = new Pila();
+        
+        //Rellenar con los numeros del 1 al 10
         PruebaPila.Rellenar(p);
+        
+        //Mostrar la pila
         System.out.println("Su pila:    " + p );
+        
+        //Imprimir e ir vaciando
         PruebaPila.ImprimiryVaciar(p);
+        
+        //Mostrar la nueva pila 
         System.out.println("La nueva pila:  " + p);
         
     }

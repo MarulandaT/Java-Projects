@@ -10,10 +10,12 @@ package Recursos;
  * @author l_mar
  */
 public class Material {
+    //Creacion de Atributos
     String Codigo;
     String Titulo;
     int Year;
     
+    //Implementacion del constructor
     public Material(String cod, String titulo, int year)
     {
         this.Codigo=cod;
@@ -21,6 +23,8 @@ public class Material {
         this.Year=year;
     }
     
+    
+    //Metodos para la obtensión de la informacion
     public String getCodigo()
     {
         return this.Codigo;

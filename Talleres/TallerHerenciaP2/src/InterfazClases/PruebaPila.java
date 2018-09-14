@@ -11,7 +11,7 @@ package InterfazClases;
  */
 public class PruebaPila {
 
-
+    //Rellenar con numeros aleatorios de 1 a 10 utilizando esta funcion
     public static void Rellenar(ColeccionInterfaz objeto)
     {
         for (int i = 1; i <= 10; i++)
@@ -20,12 +20,12 @@ public class PruebaPila {
         }
     }
     
-    
+    //Imprimir  e ir vaciando (sacando los elementos de la pila)
     public static void ImprimiryVaciar(ColeccionInterfaz objeto)
     {
         while(!objeto.estaVacia())
         {
-            System.out.println(objeto.extraer());
+            System.out.println(objeto.Extraer());
         }
         System.out.println("\n");
     }

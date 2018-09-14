@@ -11,11 +11,13 @@ package clases;
  */
 public class Multimedia {
     
+    //Atributos de clase
     public String Titulo; 
     public String Autor;
     public TipoFormato Formato;
     public int Duracion;
     
+    //Constructor de clase
     public Multimedia (String titulo, String autor, TipoFormato formato, int duracion)
     {
         this.Titulo = titulo;
@@ -24,6 +26,7 @@ public class Multimedia {
         this.Duracion = duracion;
     }
     
+    //Metodos para obtener la información
     public String getTitulo()
     {
         return this.Titulo;
@@ -45,13 +48,14 @@ public class Multimedia {
     
     }
     
+    //Metodo toString
     @Override 
     public String toString ()
     {
         return this.Autor+" "+this.Formato+" "+this.Titulo+" "+this.Duracion;
     }
     
-    
+    //Determinar un metodo equals propio
     public boolean equals()
     {
         if(this.Titulo == this.Autor)

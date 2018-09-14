@@ -10,12 +10,16 @@ package clases;
  * @author l_mar
  */
 public class Disco extends Multimedia {
+    //Atributos de clase
     public String Genero="";
+    
+    //Constructor
     public Disco(String titulo, String autor, TipoFormato formato, int duracion, String genero) {
         super(titulo, autor, formato, duracion);
         this.Genero=genero;
     }
     
+    //Obtener los diferentes elementos
     public String getGenero()
     {
         return this.Genero;

@@ -13,7 +13,7 @@ public class Multimedia {
     
     public String Titulo; 
     public String Autor;
-    public String Formato;
+    public TipoFormato Formato;
     public int Duracion;
     /*static final String w = "wav";
     static final String m = "mp3";
@@ -25,7 +25,7 @@ public class Multimedia {
     static final String v = "dvd";*/
     
     
-    public Multimedia (String titulo, String autor, String formato, int duracion)
+    public Multimedia (String titulo, String autor, TipoFormato formato, int duracion)
     {
         this.Titulo = titulo;
         this.Autor = autor;
@@ -43,7 +43,7 @@ public class Multimedia {
         return this.Autor;
     }
     
-    public String getFormato()
+    public TipoFormato getFormato()
     {
         return this.Formato;
     }

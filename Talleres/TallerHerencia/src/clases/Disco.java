@@ -11,7 +11,7 @@ package clases;
  */
 public class Disco extends Multimedia {
     public String Genero="";
-    public Disco(String titulo, String autor, String formato, int duracion, String genero) {
+    public Disco(String titulo, String autor, TipoFormato formato, int duracion, String genero) {
         super(titulo, autor, formato, duracion);
         this.Genero=genero;
     }

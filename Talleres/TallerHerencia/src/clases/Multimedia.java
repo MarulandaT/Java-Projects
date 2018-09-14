@@ -15,15 +15,6 @@ public class Multimedia {
     public String Autor;
     public TipoFormato Formato;
     public int Duracion;
-    /*static final String w = "wav";
-    static final String m = "mp3";
-    static final String d = "midi";
-    static final String a = "avi";
-    static final String o = "mov";
-    static final String p = "mpg";
-    static final String c = "cdAudio";
-    static final String v = "dvd";*/
-    
     
     public Multimedia (String titulo, String autor, TipoFormato formato, int duracion)
     {

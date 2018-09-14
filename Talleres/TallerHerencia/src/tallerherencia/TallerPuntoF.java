@@ -16,9 +16,9 @@ public class TallerPuntoF {
         
          ListaMultimedia l1multimedia = new ListaMultimedia(20);
         
-         Disco disco1 = new Disco("Thiller", "MJ", "Mp3", 120, "Pop");
-         Disco disco2 = new Disco("Bad", "MJ", "Mp3", 150, "Pop");
-         Disco disco3 = new Disco("Dangerous", "MJ", "Mp3", 100, "Pop");
+         Disco disco1 = new Disco("Thiller", "MJ", TipoFormato.mp3, 120, "Pop");
+         Disco disco2 = new Disco("Bad", "MJ", TipoFormato.mp3, 150, "Pop");
+         Disco disco3 = new Disco("Dangerous", "MJ", TipoFormato.mp3, 100, "Pop");
          
          l1multimedia.add(disco1);
          l1multimedia.add(disco2);

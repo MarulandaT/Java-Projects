@@ -20,9 +20,9 @@ public class TallerHerencia {
         
          ListaMultimedia lmultimedia = new ListaMultimedia(10);
         
-         Pelicula pelicula1 = new Pelicula("Titanic", "Autor1", "mp4", 320, "actor1", 0);
-         Pelicula pelicula2 = new Pelicula("Spider Man", "Autor2", "mp4", 200, "actor2",0);
-         Pelicula pelicula3 = new Pelicula("Harry Potter", "Autor3", "mp4", 300, "actor3", "actriz1");
+         Pelicula pelicula1 = new Pelicula("Titanic", "Autor1", TipoFormato.mov, 320, "actor1", 0);
+         Pelicula pelicula2 = new Pelicula("Spider Man", "Autor2", TipoFormato.mov, 200, "actor2",0);
+         Pelicula pelicula3 = new Pelicula("Harry Potter", "Autor3", TipoFormato.mov, 300, "actor3", "actriz1");
          
          
          lmultimedia.add(pelicula1);

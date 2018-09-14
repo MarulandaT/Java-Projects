@@ -22,13 +22,7 @@ public class Pila implements ColeccionInterfaz{
     
     @Override
     public boolean estaVacia(){
-        if(this.contador==0)
-        {
-            return true;
-        } else 
-        {
-            return false;
-        }
+        return this.contador==0;
     }
     
     @Override

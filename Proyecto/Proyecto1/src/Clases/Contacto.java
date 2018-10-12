@@ -4,12 +4,21 @@ import java.io.Serializable;
 
 public class Contacto implements Serializable
 {
+    //Atributos de clase
     private String nombre;
     private String telefono;
     private String correo;
     private String direccion;
     private String alias;
-
+    
+    /**
+     * Constructor de clase
+     * @param Nombre
+     * @param Telefono
+     * @param Correo
+     * @param Direccion
+     * @param Alias 
+     */
     public Contacto(String Nombre, String Telefono, String Correo, String Direccion, String Alias)
     {
         this.nombre=Nombre;

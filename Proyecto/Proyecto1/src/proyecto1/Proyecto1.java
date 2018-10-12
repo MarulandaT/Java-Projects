@@ -11,10 +11,11 @@ public class Proyecto1 {
         boolean ejecutar = true;
         
         while(ejecutar){
-        String[] options = {"Listar los contactos","Agregar un contacto",
-        "Modificar un contacto","Eliminar un contacto",
-        "Buscar en la agenda","Importar contactos",
-        "Exportar contactos","Guardar y salir"};
+        String[] options = {"Agregar un contacto","Modificar un contacto","Eliminar un contacto",
+        "Buscar en la agenda","Importar contactos","Exportar contactos","Guardar y salir"};
+        
+        lc.ImprimirLista();
+
         int seleccion = JOptionPane.showOptionDialog(null,
         "Seleccione una opcion:", 
         "Menu de Inicio", 
@@ -27,40 +28,35 @@ public class Proyecto1 {
             {
                 case 0:
                 {
-                    lc.ImprimirLista();
+                    lc.MenuAgregar(lc);;
                     break;
                 }
                 case 1:
                 {
-                    lc.MenuAgregar(lc);
+                    lc.Modificar();
                     break;
                 }
                 case 2:
                 {
-                    lc.Modificar();
+                    lc.Eliminar();
                     break;
                 }
                 case 3:
                 {
-                    lc.Eliminar();
+                    lc.Buscar();
                     break;
                 }
                 case 4:
                 {
-                    lc.Buscar();
+                    Archivo.Importar(lc);
                     break;
                 }
                 case 5:
                 {
-                    Archivo.Importar(lc);
-                    break;
-                }
-                case 6:
-                {
                     Archivo.Exportar(lc);
                     break;
                 }
-                case 7:
+                case 6:
                 {
                     ejecutar = false;
                 }
@@ -77,6 +73,6 @@ public class Proyecto1 {
         ListContacto Final; 
         Final = MenuPpal(L,A);
         A.Update(Final);
- 
+        
     }
 }

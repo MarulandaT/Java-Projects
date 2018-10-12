@@ -9,12 +9,20 @@ public class ListContacto implements Serializable{
     private ArrayList<Contacto> Resultado;
     private Contacto CAux;
     
+    /**
+     * Constructor de la clase Lista de Contactos
+     */
     public ListContacto()
     {
         this.Lista=new ArrayList<Contacto>();
         this.Resultado=new ArrayList<Contacto>();
     }
      
+    /**
+     * Agregar desde el JavaOptionPane
+     * Guarda contactos en la lista!
+     * @param lc 
+     */
     public void MenuAgregar(ListContacto lc)
     {
         String n,t,c,d,a;
@@ -32,6 +40,14 @@ public class ListContacto implements Serializable{
         }
     }
     
+    /**
+     * Agregar contactos verificando si el telefono está repetido en la agenda
+     * @param Nombre
+     * @param Telefono
+     * @param Correo
+     * @param Direccion
+     * @param Alias 
+     */
     public void Agregar(String Nombre, String Telefono, String Correo, String Direccion, String Alias)
     {
         this.CAux = new Contacto(Nombre, Telefono, Correo, Direccion, Alias);
@@ -44,6 +60,9 @@ public class ListContacto implements Serializable{
         }
     }
     
+    /**
+     * Elimina un contacto especificando su nombre.
+     */
     public void Eliminar()
     {
         String id;
@@ -68,6 +87,10 @@ public class ListContacto implements Serializable{
         }
     }
     
+    /**
+     * Modifica un contacto específicando su nombre
+     * Por defecto tiene los valores que tenía el contacto previamente
+     */
     public void Modificar()
     {
         String id;
@@ -98,8 +121,8 @@ public class ListContacto implements Serializable{
                     this.Lista.get(i).setAlias(a);
                     resultado = true;
                 } else {
-                    JOptionPane.showMessageDialog(null, "¡Ingreso valores erroneos!", 
-                "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "¡Ingreso valores erroneos o un télefono"
+                            + " ya existente en la agenda!", "Error", JOptionPane.ERROR_MESSAGE);
                     resultado = true;
                 }
             }
@@ -110,16 +133,28 @@ public class ListContacto implements Serializable{
         }
     }
     
+    /**
+     * Obtiene el tamaño del ListContacto
+     * @return 
+     */
     public int Size()
     {
         return this.Lista.size();
     }
     
+    /**
+     * Obtener un contacto conociendo su posición en lista
+     * @param pos
+     * @return 
+     */
     public Contacto getContacto(int pos)
     {
         return this.Lista.get(pos);
     }
     
+    /**
+     * Busca por cualquier campo, verifica existencias e imprime resultados
+     */
     public void Buscar()
     {
         this.Resultado.clear();
@@ -132,20 +167,24 @@ public class ListContacto implements Serializable{
                 this.CAux=this.Lista.get(i);
                 if(this.CAux.getNombre().contains(SAux)){
                     this.Resultado.add(CAux);
+                    R = true;
                 } else if (this.CAux.getTelefono().contains(SAux))
                 {
                     this.Resultado.add(CAux);
+                    R = true;
                 } else if (this.CAux.getCorreo().contains(SAux))
                 {
                     this.Resultado.add(CAux);
+                    R = true;
                 } else if (this.CAux.getDireccion().contains(SAux))
                 {
                     this.Resultado.add(CAux);
+                    R = true;
                 } else if (this.CAux.getAlias().contains(SAux))
                 {
                     this.Resultado.add(CAux);
+                    R = true;
                 }
-                R = true;
             }
             
         } else {
@@ -167,14 +206,31 @@ public class ListContacto implements Serializable{
         }
     }
     
+    /**
+     * Imprime la lista de contactos (Que no sea una búsqueda)
+     */
     public void ImprimirLista()
     {
+        System.out.print("CONTACTOS EN SU AGENDA:");
         for(int i=0; i<this.Lista.size(); i++)
         {
-            System.out.println(this.Lista.get(i).toString());
+            this.CAux = this.Lista.get(i);
+            System.out.println();
+            System.out.print("Nombre:" + this.CAux.getNombre());
+            System.out.print(", Telefono:" + this.CAux.getTelefono());
+            System.out.print(", Correo:" + this.CAux.getCorreo());
+            System.out.print(", Dirección:" + this.CAux.getDireccion());
+            System.out.print(", Alias:" + this.CAux.getAlias());
         }
+        System.out.println("\n");
     }
     
+    /**
+     * Verifica que no hayan telefonos repetidos
+     * @param lc
+     * @param c
+     * @return 
+     */
     public boolean VerTelRepetido(ArrayList<Contacto> lc,Contacto c)
     {
         boolean r=true;

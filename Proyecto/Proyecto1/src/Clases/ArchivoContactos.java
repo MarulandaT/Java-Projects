@@ -21,16 +21,25 @@ import javax.swing.JOptionPane;
 
 public class ArchivoContactos {
     
+    //Atributos de Clase
      private File archivo;
      private File export;
      private File Import;
      private ListContacto laux;
      
+     /**
+      * Constructor de archivos para su apertura
+      */
      public ArchivoContactos()
      {
          this.archivo = new File("Contactos.txt");
      }
      
+     
+     /**
+      * Actualizar el archivo serializable que contiene la lista de contactos
+      * @param c 
+      */
     public void Update(ListContacto c)
     {
       try {
@@ -48,6 +57,10 @@ public class ArchivoContactos {
         } 
      }
     
+    /**
+     * Sacar los contactos del archivo serializable a un texto plano
+     * @param c 
+     */
     public void Exportar(ListContacto c)
     {
         String Ruta;
@@ -70,6 +83,10 @@ public class ArchivoContactos {
         }
     }
     
+    /**
+     * Obtener contactos desde un archivo txt
+     * @param lc 
+     */
     public void Importar(ListContacto lc)
     {
         String Ruta;
@@ -93,6 +110,10 @@ public class ArchivoContactos {
         }
     }
     
+    /**
+     * Inicializar el archivo con los datos guardados de otras ejecuciones
+     * @return 
+     */
     public ListContacto CargarAgenda()
     {
         if(this.archivo.exists()){

@@ -66,11 +66,11 @@ public class ListContacto implements Serializable{
     public void Eliminar()
     {
         String id;
-        id = JOptionPane.showInputDialog("Nombre del contacto a Eliminar:");
+        id = JOptionPane.showInputDialog("Numero de telefono del contacto a Eliminar:");
         boolean resultado = false;
         if(id != null){
             for(int i=0; i<this.Lista.size(); i++){
-                if(this.Lista.get(i).getNombre().equals(id)){
+                if(this.Lista.get(i).getTelefono().equals(id)){
                     this.CAux = this.Lista.get(i);
                     this.Lista.remove(this.CAux);
                     resultado = true;
@@ -94,12 +94,12 @@ public class ListContacto implements Serializable{
     public void Modificar()
     {
         String id;
-        id = JOptionPane.showInputDialog("Nombre del contacto a modificar:");
+        id = JOptionPane.showInputDialog("Número de telefono del contacto a modificar:");
         boolean resultado = false;
         
         for (int i=0; i<this.Lista.size(); i++)
         {
-            if(this.Lista.get(i).getNombre().equals(id))
+            if(this.Lista.get(i).getTelefono().equals(id))
             {
                 String n,t,c,d,a;
                 n = JOptionPane.showInputDialog("Nuevo nombre del contacto:",
@@ -158,7 +158,7 @@ public class ListContacto implements Serializable{
     public void Buscar()
     {
         this.Resultado.clear();
-        String SAux;
+        String SAux,cadenar="Resultado de búsqueda:\n";
         boolean R = false;
         SAux=JOptionPane.showInputDialog("Busque NOMBRE, TELEFONO,"
                 + "CORREO, DIRECCION O ALIAS");
@@ -195,11 +195,13 @@ public class ListContacto implements Serializable{
         
         if(R)
         {
-            System.out.println("\n RESULTADO DE BUSQUEDA:");
             for(int i=0; i<this.Resultado.size(); i++)
             {
-                System.out.println(Resultado.get(i).toString());
+                cadenar = cadenar + Resultado.get(i).toString() 
+                        + "\n";
             }
+            JOptionPane.showMessageDialog(null, cadenar, 
+                "Resultado de busqueda", JOptionPane.INFORMATION_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(null, "No existe el contacto", 
                 "Error", JOptionPane.WARNING_MESSAGE);
@@ -207,22 +209,22 @@ public class ListContacto implements Serializable{
     }
     
     /**
-     * Imprime la lista de contactos (Que no sea una búsqueda)
+     * Convierte la lista de contactos en un string, para poder mostrarla en el jframe.
+     * @return 
      */
-    public void ImprimirLista()
+    public String ImprimirLista()
     {
-        System.out.print("CONTACTOS EN SU AGENDA:");
+        String salida = "LISTA DE CONTACTOS:";
         for(int i=0; i<this.Lista.size(); i++)
         {
             this.CAux = this.Lista.get(i);
-            System.out.println();
-            System.out.print("Nombre:" + this.CAux.getNombre());
-            System.out.print(", Telefono:" + this.CAux.getTelefono());
-            System.out.print(", Correo:" + this.CAux.getCorreo());
-            System.out.print(", Dirección:" + this.CAux.getDireccion());
-            System.out.print(", Alias:" + this.CAux.getAlias());
+            salida = salida  + "\nNombre:" + this.CAux.getNombre()
+                    +", Telefono:" + this.CAux.getTelefono()
+                    +", Correo:" + this.CAux.getCorreo()
+                    +", Dirección:" + this.CAux.getDireccion()
+                    +", Alias:" + this.CAux.getAlias();
         }
-        System.out.println("\n");
+        return salida;
     }
     
     /**

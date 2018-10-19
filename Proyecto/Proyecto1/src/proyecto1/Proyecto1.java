@@ -5,10 +5,8 @@ import Clases.*;
 import javax.swing.JOptionPane;
 
 import javax.swing.JTextArea;
-import javax.swing.JScrollPane;
 import javax.swing.JFrame;
 
-import java.awt.Dimension;
 import java.awt.FlowLayout;
 
 public class Proyecto1 {
@@ -38,8 +36,6 @@ public class Proyecto1 {
         JOptionPane.QUESTION_MESSAGE, 
         null, 
         options, null);
-        
-        
         
         switch(seleccion)
             {

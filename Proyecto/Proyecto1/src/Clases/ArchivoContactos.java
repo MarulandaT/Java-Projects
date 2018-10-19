@@ -91,22 +91,26 @@ public class ArchivoContactos {
     {
         String Ruta;
         Ruta = JOptionPane.showInputDialog("Ingrese la dirección del archivo a importar:");
-                
-        try {
-            this.Import = new File (Ruta);
-            FileReader fr = new FileReader(this.Import);
-            BufferedReader br = new BufferedReader(fr) ;
-            String Cadena; 
-            while((Cadena=br.readLine())!=null){
-                String[] parts = Cadena.split(";");
-                lc.Agregar(parts[0],parts[1],parts[2],parts[3],parts[4]);
+        if(Ruta!=null) {       
+            try {
+                this.Import = new File (Ruta);
+                FileReader fr = new FileReader(this.Import);
+                BufferedReader br = new BufferedReader(fr) ;
+                String Cadena; 
+                while((Cadena=br.readLine())!=null){
+                    String[] parts = Cadena.split(";");
+                    lc.Agregar(parts[0],parts[1],parts[2],parts[3],parts[4]);
+                }
+                br.close();
+                fr.close();
+            } catch (FileNotFoundException e){
+                e.printStackTrace();
+            } catch (IOException e){
+                e.printStackTrace();
             }
-            br.close();
-            fr.close();
-        } catch (FileNotFoundException e){
-            e.printStackTrace();
-        } catch (IOException e){
-            e.printStackTrace();
+        } else {
+            JOptionPane.showMessageDialog(null, "¡Dirección Nula!", 
+                "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
     

@@ -1,24 +1,29 @@
 
+/**
+ *ArchivoContactos.java
+ *V 1.0
+ *Enero 25-2019
+ */
+
 package Clases;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-
 import java.io.FileOutputStream;
 import java.io.FileInputStream;
-
 import java.io.ObjectOutputStream;
 import java.io.ObjectInputStream;
-
 import java.io.BufferedWriter;
 import java.io.BufferedReader;
-
 import java.io.FileWriter;
 import java.io.FileReader;
-
 import javax.swing.JOptionPane;
 
+/**
+ * Clase encargada de hacer transacciones con el archivo serializable.
+ * @author l_mar
+ */
 public class ArchivoContactos {
     
     //Atributos de Clase
@@ -34,7 +39,6 @@ public class ArchivoContactos {
      {
          this.archivo = new File("Contactos.txt");
      }
-     
      
      /**
       * Actualizar el archivo serializable que contiene la lista de contactos
@@ -90,16 +94,17 @@ public class ArchivoContactos {
     public void Importar(ListContacto lc)
     {
         String Ruta;
-        Ruta = JOptionPane.showInputDialog("Ingrese la dirección del archivo a importar:");
-        if(Ruta!=null) {       
+        Ruta = JOptionPane.showInputDialog("Ingrese la dirección "
+                + "del archivo a importar:");
+        if (Ruta!=null) {       
             try {
                 this.Import = new File (Ruta);
                 FileReader fr = new FileReader(this.Import);
                 BufferedReader br = new BufferedReader(fr) ;
                 String Cadena; 
-                while((Cadena=br.readLine())!=null){
+                while ((Cadena=br.readLine()) != null) {
                     String[] parts = Cadena.split(";");
-                    lc.Agregar(parts[0],parts[1],parts[2],parts[3],parts[4]);
+                    lc.Agregar(parts[0], parts[1], parts[2], parts[3], parts[4]);
                 }
                 br.close();
                 fr.close();
@@ -120,25 +125,24 @@ public class ArchivoContactos {
      */
     public ListContacto CargarAgenda()
     {
-        if(this.archivo.exists()){
-        try {
-            
-            FileInputStream fis = new FileInputStream(this.archivo);
-            ObjectInputStream ois = new ObjectInputStream(fis);
-            this.laux = (ListContacto)ois.readObject();
-            ois.close();
-            fis.close();
-        } catch (FileNotFoundException e)
-        {
-            e.printStackTrace();
-        } catch (IOException e)
-        {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e)
-        {
-            e.printStackTrace();
-        }
-    } else {
+        if (this.archivo.exists()) {
+            try {
+                FileInputStream fis = new FileInputStream(this.archivo);
+                ObjectInputStream ois = new ObjectInputStream(fis);
+                this.laux = (ListContacto)ois.readObject();
+                ois.close();
+                fis.close();
+            } catch (FileNotFoundException e)
+            {
+                e.printStackTrace();
+            } catch (IOException e)
+            {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e)
+            {
+                e.printStackTrace();
+            }
+        } else {
             this.laux = new ListContacto();
         }
         return this.laux;

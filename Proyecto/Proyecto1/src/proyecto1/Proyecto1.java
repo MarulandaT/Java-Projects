@@ -1,24 +1,35 @@
+/**
+ *Proyecto1.java 
+ *V 1.0
+ *Enero 25-2019
+ */
 
 package proyecto1;
 
 import Clases.*;
 import javax.swing.JOptionPane;
-
 import javax.swing.JTextArea;
 import javax.swing.JFrame;
-
 import java.awt.FlowLayout;
 
+/**
+ * La clase Proyecto1.Java se encarga de la ejecucion
+ * del programa y los elementos del mismo como lo son
+ * los formularios. 
+ * @author l_mar
+ */
 public class Proyecto1 {
     
-    public static ListContacto MenuPpal(ListContacto lc, ArchivoContactos Archivo)
+    public static ListContacto MenuPpal(ListContacto lc, 
+            ArchivoContactos Archivo)
     {
         boolean ejecutar = true;
         
-        while(ejecutar){
-        String x = lc.ImprimirLista();
-        String[] options = {"Agregar un contacto","Modificar un contacto","Eliminar un contacto",
-        "Buscar en la agenda","Importar contactos","Exportar contactos","Guardar y salir"};
+        while (ejecutar) {
+        String x = lc.ImprimirLista(); //Obtener los contactos como una sola cadena
+        String[] options = {"Agregar un contacto", "Modificar un contacto",
+            "Eliminar un contacto", "Buscar en la agenda",
+            "Importar contactos", "Exportar contactos","Guardar y salir"};
         
         JFrame frame = new JFrame("Agenda de contactos Actualizada");
         frame.setLayout(new FlowLayout());
@@ -34,58 +45,57 @@ public class Proyecto1 {
         "Menu de Inicio", 
         JOptionPane.DEFAULT_OPTION, 
         JOptionPane.QUESTION_MESSAGE, 
-        null, 
-        options, null);
+        null, options, null);
         
         switch(seleccion)
-            {
-                case 0:
-                {
-                    lc.MenuAgregar(lc);
-                    frame.dispose();
-                    break;
-                }
-                case 1:
-                {
-                    lc.Modificar();
-                    frame.dispose();
-                    break;
-                }
-                case 2:
-                {
-                    lc.Eliminar();
-                    frame.dispose();
-                    break;
-                }
-                case 3:
-                {
-                    lc.Buscar();
-                    frame.dispose();
-                    break;
-                }
-                case 4:
-                {
-                    Archivo.Importar(lc);
-                    frame.dispose();
-                    break;
-                }
-                case 5:
-                {
-                    Archivo.Exportar(lc);
-                    frame.dispose();
-                    break;
-                }
-                case 6:
-                {
-                    frame.dispose();
-                    ejecutar = false;
-                }
-                default:
-                {
-                    frame.dispose();
-                    break;
-                } 
-            }
+        {
+        case 0:
+        {
+            lc.MenuAgregar(lc);
+            frame.dispose();
+            break;
+        }
+        case 1:
+        {
+            lc.Modificar();
+            frame.dispose();
+            break;
+        }
+        case 2:
+        {
+            lc.Eliminar();
+            frame.dispose();
+            break;
+        }
+        case 3:
+        {
+            lc.Buscar();
+            frame.dispose();
+            break;
+        }
+        case 4:
+        {
+            Archivo.Importar(lc);
+            frame.dispose();
+            break;
+        }
+        case 5:
+        {
+            Archivo.Exportar(lc);
+            frame.dispose();
+            break;
+        }
+        case 6:
+        {
+            frame.dispose();
+            ejecutar = false;
+        }
+        default:
+        {
+            frame.dispose();
+            break;
+        } 
+        }
         }
         return lc; 
     }
@@ -95,7 +105,7 @@ public class Proyecto1 {
         ArchivoContactos A = new ArchivoContactos();
         ListContacto L = A.CargarAgenda();
         ListContacto Final; 
-        Final = MenuPpal(L,A);
+        Final = MenuPpal(L, A);
         A.Update(Final);
         
     }

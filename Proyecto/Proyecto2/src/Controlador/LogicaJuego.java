@@ -11,8 +11,10 @@ import Modelo.Barco;
 import Vista.Tablero;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.io.IOException;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+
 
 /**
  *
@@ -30,7 +32,9 @@ public class LogicaJuego {
     
     private boolean Ejecutar;
     
-    public void Iniciar() {
+    GuardarPuntaje pun = new GuardarPuntaje();
+    
+    public void Iniciar() throws Exception {
         ventana = new JFrame();
         int tamfx = 1022;
         int tamfy = 600;
@@ -46,7 +50,7 @@ public class LogicaJuego {
         EjecutarJuego();
     }
     
-    public void EjecutarJuego(){
+    public void EjecutarJuego() throws Exception{
         Ejecutar = true;
         
         MenuPpal MenuInicio = new MenuPpal(ventana);
@@ -169,7 +173,7 @@ public class LogicaJuego {
         return resultado;
     }
     
-    public void ciclo(Tablero t,  Barco[] pc, Barco[] jugador, JLabel Mvtos) {
+    public void ciclo(Tablero t,  Barco[] pc, Barco[] jugador, JLabel Mvtos) throws IOException, Exception {
         
         while(Ejecutar) {
             
@@ -224,6 +228,10 @@ public class LogicaJuego {
                     try { Thread.sleep(5000); 
                     } catch(InterruptedException e ) 
                     { System.out.println("x"); }
+                    if (t.getPuntaje() < 15){
+                        pun.runFile();
+                        pun.savePuntaje("El puntaje es: " + Integer.toString(t.getPuntaje()));
+                    }
                     res.setText("HAS GANADO!");
                     res.setLocation(100, 100);
                     res.setSize(200, 40);

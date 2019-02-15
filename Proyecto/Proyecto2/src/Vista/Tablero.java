@@ -12,12 +12,18 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.AudioSystem;
+
 
 public class Tablero extends JPanel implements MouseListener{
     private BufferedImage tableroImage;
     private Object[][] matriz;
     private Object[][] matriz2;
     private int ticks = 21;
+    private int puntaje = 0;
+    private Clip clip;
+    private String path = "/Vista/";
     
     /*
     * Default constructor. Uses an empty array
@@ -107,9 +113,11 @@ public class Tablero extends JPanel implements MouseListener{
                             if (this.matriz2[conversionx][conversiony].getClass().getName().equals("Modelo.PiezaBarco")
                                     && !((PiezaBarco)this.matriz2[conversionx][conversiony]).pDestruida()) {
                                 ((PiezaBarco)this.matriz2[conversionx][conversiony]).Destruido();
+                                dalePlay("bomba");
                                 repaint();
                             } else if ((int)this.matriz2[conversionx][conversiony] == 0) {
                                 this.matriz2[conversionx][conversiony] = 1;
+                                dalePlay("bombamal");
                                 repaint();
                             } else if (this.matriz2[conversionx][conversiony].getClass().getName().equals("Modelo.PiezaBarco")
                                     && ((PiezaBarco)this.matriz2[conversionx][conversiony]).pDestruida()) {
@@ -118,6 +126,7 @@ public class Tablero extends JPanel implements MouseListener{
                                 repaint();
                             }
                             this.ticks--;
+                            this.puntaje++;
                             esTurnoPc();
                     }
                 }
@@ -168,4 +177,17 @@ public class Tablero extends JPanel implements MouseListener{
         return this.ticks;
     }
   
+    public int getPuntaje(){
+        return this.puntaje;
+    }
+    
+    public void dalePlay(String value){
+        try{
+            clip = AudioSystem.getClip();
+            clip.open(AudioSystem.getAudioInputStream(getClass().getResourceAsStream(path+value+".wav")));
+            clip.loop(0);
+        } catch (Exception ex) {
+            System.err.println(ex.getMessage());
+        }
+    }
 }

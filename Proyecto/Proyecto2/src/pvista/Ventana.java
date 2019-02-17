@@ -59,4 +59,47 @@ public class Ventana extends JFrame{
         ventana.repaint();
         ventana.setVisible(true);
     }
+    
+    public void finalizar(JFrame v, Tablero t, JLabel m, int caso) {
+        JLabel res = new JLabel();
+        m.setText("Movimientos restantes: " + Integer.toString(0));
+        v.getContentPane().remove(t);
+        
+        switch (caso){
+            case 0: {
+            
+            try { Thread.sleep(5000); 
+            } catch(InterruptedException e ) 
+            { System.out.println("x"); }
+            res.setText("HAS GANADO!");
+            res.setLocation(100, 100);
+            res.setSize(200, 40);
+            v.getContentPane().add(res);
+            v.repaint();
+            }
+            case 1: {
+            
+            try { Thread.sleep(5000); 
+            } catch(InterruptedException e ) 
+            { System.out.println("x"); }
+            res.setText("CPU HA GANADO!");
+            res.setLocation(100, 100);
+            res.setSize(200, 40);
+            v.getContentPane().add(res);
+            v.repaint();
+            }
+            case 2: {
+            
+            try { Thread.sleep(5000); 
+            } catch(InterruptedException e ) 
+            { System.out.println("x"); }
+            res.setText("Has perdido");
+            res.setLocation(100, 100);
+            res.setSize(200, 40);
+            v.getContentPane().add(res);
+            v.repaint();
+            }
+        
+        }
+    }
 }

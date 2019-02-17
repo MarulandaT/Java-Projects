@@ -27,6 +27,7 @@ public class LogicaJuego {
     public static int barcoDoble = 6;
     
     private JFrame ventana;
+    private Ventana x;
     
     private boolean ejecutar;
     
@@ -35,7 +36,7 @@ public class LogicaJuego {
     public void Iniciar() throws Exception {
          
         ventana = new Ventana();
-        Ventana x = new Ventana();
+         x = new Ventana();
         
         x.DimensionVentana(ventana);
         ejecutar = true;
@@ -142,7 +143,6 @@ public class LogicaJuego {
     public void ciclo(Tablero t,  Barco[] pc, Barco[] jugador, JLabel Mvtos) throws IOException, Exception {
         
         while(ejecutar) {
-            
             Mvtos.setText("Movimientos restantes: " + Integer.toString(t.getDisparo().getTicks()));
             
             boolean todosMuertos1 = true;
@@ -165,61 +165,26 @@ public class LogicaJuego {
             }
             
             if(todosMuertos1 || todosMuertos2 || t.getDisparo().getTicks() == 0) {
-                /*
-            
+                t.repaint();
                 if (todosMuertos1) {
-                    
-                    Mvtos.setText("Movimientos restantes: " + Integer.toString(0));
-                    JLabel res = new JLabel();
-                    
-                    ventana.getContentPane().remove(t);
-                    try { Thread.sleep(5000); 
-                    } catch(InterruptedException e ) 
-                    { System.out.println("x"); }
-                    if (t.getPuntaje() < 15){
+                    x.finalizar(ventana, t, Mvtos,0);
+                    if (t.getDisparo().getPuntaje() < 15){
                         pun.runFile();
-                        pun.savePuntaje("El puntaje es: " + Integer.toString(t.getPuntaje()));
+                        pun.savePuntaje("El puntaje es: " + Integer.toString(t.getDisparo().getPuntaje()));
                     }
-                    res.setText("HAS GANADO!");
-                    res.setLocation(100, 100);
-                    res.setSize(200, 40);
-                    ventana.getContentPane().add(res);
-                    ventana.repaint();
                     this.setEjecutar(false);
                 } else if (todosMuertos2) {
-                    Mvtos.setText("Movimientos restantes: " + Integer.toString(0));
-                    JLabel res = new JLabel();
-                    ventana.getContentPane().remove(t);
-                    try { Thread.sleep(5000); 
-                    } catch(InterruptedException e ) 
-                    { System.out.println("x"); }
-                    res.setText("CPU HA GANADO!");
-                    res.setLocation(100, 100);
-                    res.setSize(200, 40);
-                    ventana.getContentPane().add(res);
-                    ventana.repaint();
+                    x.finalizar(ventana, t, Mvtos, 1);
                     this.setEjecutar(false);
-                } else if (t.getTicks() == 0) {
-                    t.repaint();
-                    Mvtos.setText("Movimientos restantes: " + Integer.toString(0));
-                    JLabel res = new JLabel();
+                } else if (t.getDisparo().getTicks() == 0) {
                     for (int i = 0; i < jugador.length; i++) {
                         for (int j = 0; j < jugador[i].getPiezaBarco().length; j++) {
                             jugador[i].getPiezaBarco()[j].Destruido();
                         }
                     }
-                    t.repaint();
-                    ventana.getContentPane().remove(t);
-                    try { Thread.sleep(5000); 
-                    } catch(InterruptedException e ) 
-                    { System.out.println("x"); }
-                    res.setText("HAS PERDIDO");
-                    res.setLocation(100, 100);
-                    res.setSize(200, 40);
-                    ventana.getContentPane().add(res);
-                    ventana.repaint();
+                    x.finalizar(ventana, t, Mvtos, 2);
                     this.setEjecutar(false);
-                } */
+                } 
             } 
             t.repaint();
         }

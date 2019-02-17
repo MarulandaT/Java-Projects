@@ -42,7 +42,6 @@ public class Tablero extends JPanel implements MouseListener{
    public Tablero(Object[][] arr, Object[][] arr2, String path) {
            matriz = arr;
            matriz2 = arr2;
-          
            try {
                    tableroImage = ImageIO.read(new File(path));
            } catch (IOException e) {

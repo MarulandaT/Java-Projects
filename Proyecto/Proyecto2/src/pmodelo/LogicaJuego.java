@@ -3,17 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controlador;
+package pmodelo;
 
-import Controlador.MenuPpal;
-import Modelo.PiezaBarco;
-import Modelo.Barco;
-import Vista.Tablero;
-import java.awt.Color;
-import java.awt.Dimension;
+import pvista.Tablero;
 import java.io.IOException;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import pcontrolador.GuardarPuntaje;
+import pvista.MenuPpal;
+import pvista.Ventana;
 
 
 /**
@@ -30,28 +28,17 @@ public class LogicaJuego {
     
     private JFrame ventana;
     
-    private boolean Ejecutar;
+    private boolean ejecutar;
     
     GuardarPuntaje pun = new GuardarPuntaje();
     
     public void Iniciar() throws Exception {
-        ventana = new JFrame();
-        int tamfx = 1022;
-        int tamfy = 600;
+         
+        ventana = new Ventana();
+        Ventana x = new Ventana();
         
-        ventana.getContentPane().setLayout(null);
-        ventana.getContentPane().setBackground(Color.lightGray);
-        
-        ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        ventana.setPreferredSize(new Dimension(tamfx,tamfy));
-        ventana.setResizable(false);
-        
-        ventana.pack();
-        EjecutarJuego();
-    }
-    
-    public void EjecutarJuego() throws Exception{
-        Ejecutar = true;
+        x.DimensionVentana(ventana);
+        ejecutar = true;
         
         MenuPpal MenuInicio = new MenuPpal(ventana);
         MenuInicio.loadTitleScreen();
@@ -59,34 +46,13 @@ public class LogicaJuego {
         
         Barco[] j1Barcos = IniciarBarcos(true);
         Barco[] pcBarcos = IniciarBarcos(false);
-        JLabel nMovimientos = new JLabel(); 
-        JLabel info = new JLabel();
         
         Tablero t = new Tablero(DistribuirBarcos(j1Barcos),DistribuirBarcos(pcBarcos));
+        JLabel nMovimientos = new JLabel(); 
         
-        t.setSize(1002,496);
-        t.setLocation(10,10);
-        t.setBackground(Color.LIGHT_GRAY);
+        x.CargarElementos(ventana, t,nMovimientos);
         
-        nMovimientos.setSize(200,40);
-        nMovimientos.setLocation(802, 512 );
-        info.setSize(600,40);
-        info.setLocation(12,512);
-        info.setText("Hay " + Integer.toString(j1Barcos.length) + " Barcos: "
-                + Integer.toString(j1Barcos.length/4) + " Horizontales, " +
-                Integer.toString(j1Barcos.length/4) + " Verticales y " +
-                Integer.toString(j1Barcos.length/2) + " Simples.");
-        
-        ventana.getContentPane().add(t);
-        ventana.getContentPane().add(nMovimientos);
-        ventana.getContentPane().add(info);
-        
-        ventana.addMouseListener(t);
-        
-        ventana.repaint();
-        ventana.setVisible(true);
-        
-        ciclo(t,j1Barcos,pcBarcos,nMovimientos);
+        ciclo(t,j1Barcos,pcBarcos,nMovimientos); 
     }
     
     public Barco[] IniciarBarcos(boolean EsJugador1){
@@ -135,7 +101,7 @@ public class LogicaJuego {
             y = (int)Math.floor(Math.random()*15);
             for (int j = 0 ; j < 15 ; j++) {
                 for (int k = 0 ; k < 15 ; k++) {
-                    if (!resultado[x][y].getClass().getName().equals("Modelo.PiezaBarco")) {
+                    if (!resultado[x][y].getClass().getName().equals("pmodelo.PiezaBarco")) {
                         resultado[x][y] = b[i].getPiezaBarco()[0];
                         resultado[x+1][y] = b[i].getPiezaBarco()[1];
                         i++;
@@ -149,7 +115,7 @@ public class LogicaJuego {
             y = (int)Math.floor(Math.random()*14);
             for (int j = 0 ; j < 15 ; j++) {
                 for (int k = 0 ; k < 15 ; k++) {
-                    if (!resultado[x][y].getClass().getName().equals("Modelo.PiezaBarco")) {
+                    if (!resultado[x][y].getClass().getName().equals("pmodelo.PiezaBarco")) {
                         resultado[x][y] = b[i].getPiezaBarco()[0];
                         resultado[x][y+1] = b[i].getPiezaBarco()[1];
                         i++;
@@ -163,7 +129,7 @@ public class LogicaJuego {
             y = (int)Math.floor(Math.random()*15);
             for (int j = 0 ; j < 15 ; j++) {
                 for (int k = 0 ; k < 15 ; k++) {
-                    if (!resultado[x][y].getClass().getName().equals("Modelo.PiezaBarco")) {
+                    if (!resultado[x][y].getClass().getName().equals("pmodelo.PiezaBarco")) {
                         resultado[x][y] = b[i].getPiezaBarco()[0];
                         i++;
                     }
@@ -175,29 +141,9 @@ public class LogicaJuego {
     
     public void ciclo(Tablero t,  Barco[] pc, Barco[] jugador, JLabel Mvtos) throws IOException, Exception {
         
-        while(Ejecutar) {
+        while(ejecutar) {
             
-            Mvtos.setText("Movimientos restantes: " + Integer.toString(t.getTicks()));
-            
-            for (int i = 0; i < jugador.length; i++) {
-                for (int j = 0; j < jugador[i].getPiezaBarco().length; j++) {
-                    if ( jugador[i].getPiezaBarco()[j].pDestruida()) {
-                        for ( int k = 0; k < jugador[i].getPiezaBarco().length; k++) {
-                            jugador[i].getPiezaBarco()[k].Destruido();
-                        }
-                    }
-                }
-            }
-            
-            for (int i = 0; i < pc.length; i++) {
-                for (int j = 0; j < pc[i].getPiezaBarco().length; j++) {
-                    if ( pc[i].getPiezaBarco()[j].pDestruida()) {
-                        for ( int k = 0; k < pc[i].getPiezaBarco().length; k++) {
-                            pc[i].getPiezaBarco()[k].Destruido();
-                        }
-                    }
-                }
-            }
+            Mvtos.setText("Movimientos restantes: " + Integer.toString(t.getDisparo().getTicks()));
             
             boolean todosMuertos1 = true;
             boolean todosMuertos2 = true;
@@ -218,7 +164,9 @@ public class LogicaJuego {
                 }
             }
             
-            if(todosMuertos1 || todosMuertos2 || t.getTicks() == 0) {
+            if(todosMuertos1 || todosMuertos2 || t.getDisparo().getTicks() == 0) {
+                /*
+            
                 if (todosMuertos1) {
                     
                     Mvtos.setText("Movimientos restantes: " + Integer.toString(0));
@@ -252,6 +200,7 @@ public class LogicaJuego {
                     ventana.repaint();
                     this.setEjecutar(false);
                 } else if (t.getTicks() == 0) {
+                    t.repaint();
                     Mvtos.setText("Movimientos restantes: " + Integer.toString(0));
                     JLabel res = new JLabel();
                     for (int i = 0; i < jugador.length; i++) {
@@ -270,13 +219,13 @@ public class LogicaJuego {
                     ventana.getContentPane().add(res);
                     ventana.repaint();
                     this.setEjecutar(false);
-                }
-            }
+                } */
+            } 
             t.repaint();
         }
     }
     
     public void setEjecutar(boolean E) {
-        Ejecutar = E;
+        ejecutar = E;
     }
 }

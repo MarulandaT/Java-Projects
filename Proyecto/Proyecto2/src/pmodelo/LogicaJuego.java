@@ -23,11 +23,15 @@ public class LogicaJuego {
     
     public static int tamBarcoSimple = 1;
     public static int tamBarcoDoble = 2;
+    public static int tamBarcoTriple = 3;
+    public static int tamBarcoCuatro = 4;
     public static int barcoSimple = 6;
-    public static int barcoDoble = 6;
+    public static int barcoDoble = 4;
+    public static int barcoTriple  = 2;
+    public static int barcoCuatro = 1;
     
     private JFrame ventana;
-    private Ventana x;
+    private Ventana graficos;
     
     private boolean ejecutar;
     
@@ -36,9 +40,9 @@ public class LogicaJuego {
     public void Iniciar() throws Exception {
          
         ventana = new Ventana();
-         x = new Ventana();
+         graficos = new Ventana();
         
-        x.DimensionVentana(ventana);
+        graficos.DimensionVentana(ventana);
         ejecutar = true;
         
         MenuPpal MenuInicio = new MenuPpal(ventana);
@@ -51,7 +55,7 @@ public class LogicaJuego {
         Tablero t = new Tablero(DistribuirBarcos(j1Barcos),DistribuirBarcos(pcBarcos));
         JLabel nMovimientos = new JLabel(); 
         
-        x.CargarElementos(ventana, t,nMovimientos);
+        graficos.CargarElementos(ventana, t,nMovimientos);
         
         ciclo(t,j1Barcos,pcBarcos,nMovimientos); 
     }
@@ -59,9 +63,13 @@ public class LogicaJuego {
     public Barco[] IniciarBarcos(boolean EsJugador1){
         Barco[] barcosSimples = crearBarco(tamBarcoSimple, barcoSimple, EsJugador1);
         Barco[] barcosDobles = crearBarco(tamBarcoDoble, barcoDoble, EsJugador1);
+        Barco[] barcosTriples = crearBarco(tamBarcoTriple, barcoTriple, EsJugador1);
+        Barco[] barcosCuatro = crearBarco(tamBarcoCuatro, barcoCuatro, EsJugador1);
         
         Barco[] barcos = concatArrayBarcos(barcosSimples, barcosDobles);
-        return barcos;
+        Barco[] barcos1 = concatArrayBarcos(barcos, barcosTriples);
+        Barco[] barcos2 = concatArrayBarcos(barcos1, barcosCuatro);
+        return barcos2;
     }
     
     public Barco[] crearBarco(int tam, int numElementos, boolean EsJugador1){
@@ -97,44 +105,79 @@ public class LogicaJuego {
         
         int x,y;
         
-        for (int i = 9 ; i < 12 ; ) {
-            x = (int)Math.floor(Math.random()*14);
-            y = (int)Math.floor(Math.random()*15);
-            for (int j = 0 ; j < 15 ; j++) {
-                for (int k = 0 ; k < 15 ; k++) {
-                    if (!resultado[x][y].getClass().getName().equals("pmodelo.PiezaBarco")) {
-                        resultado[x][y] = b[i].getPiezaBarco()[0];
-                        resultado[x+1][y] = b[i].getPiezaBarco()[1];
-                        i++;
-                    }
-                }
-            }
+        for (int i = 12; i < 13; ) {
+            x = (int)Math.floor(Math.random()*15);
+            y = (int)Math.floor(Math.random()*12);
+            if (!resultado[x][y].getClass().getName().equals("pmodelo.PiezaBarco")
+                    && !resultado[x][y+1].getClass().getName().equals("pmodelo.PiezaBarco")
+                    && !resultado[x][y+2].getClass().getName().equals("pmodelo.PiezaBarco")
+                    && !resultado[x][y+3].getClass().getName().equals("pmodelo.PiezaBarco")) {
+                resultado[x][y] = b[i].getPiezaBarco()[0];
+                resultado[x][y+1] = b[i].getPiezaBarco()[1];
+                resultado[x][y+2] = b[i].getPiezaBarco()[2];
+                resultado[x][y+3] = b[i].getPiezaBarco()[3];
+                i++;
+           }
         }
         
-        for (int i = 6 ; i < 9 ; ) {
+        for (int i = 11; i < 12; ) {
+            x = (int)Math.floor(Math.random()*15);
+            y = (int)Math.floor(Math.random()*13);
+            if (!resultado[x][y].getClass().getName().equals("pmodelo.PiezaBarco")
+                    && !resultado[x][y+1].getClass().getName().equals("pmodelo.PiezaBarco")
+                    && !resultado[x][y+2].getClass().getName().equals("pmodelo.PiezaBarco")) {
+                resultado[x][y] = b[i].getPiezaBarco()[0];
+                resultado[x][y+1] = b[i].getPiezaBarco()[1];
+                resultado[x][y+2] = b[i].getPiezaBarco()[2];
+                i++;
+           }
+        }
+        
+        for (int i = 10; i < 11; ) {
+            x = (int)Math.floor(Math.random()*13);
+            y = (int)Math.floor(Math.random()*15);
+            if (!resultado[x][y].getClass().getName().equals("pmodelo.PiezaBarco")
+                    && !resultado[x+1][y].getClass().getName().equals("pmodelo.PiezaBarco")
+                    && !resultado[x+2][y].getClass().getName().equals("pmodelo.PiezaBarco")) {
+                resultado[x][y] = b[i].getPiezaBarco()[0];
+                resultado[x+1][y] = b[i].getPiezaBarco()[1];
+                resultado[x+2][y] = b[i].getPiezaBarco()[2];
+                i++;
+           }
+        }
+        
+        for (int i = 8 ; i <  10; ) {
+            x = (int)Math.floor(Math.random()*14);
+            y = (int)Math.floor(Math.random()*15);
+            if (!resultado[x][y].getClass().getName().equals("pmodelo.PiezaBarco")
+                    && !resultado[x+1][y].getClass().getName().equals("pmodelo.PiezaBarco")) {
+                resultado[x][y] = b[i].getPiezaBarco()[0];
+                resultado[x+1][y] = b[i].getPiezaBarco()[1];
+                i++;
+                    }
+        }
+        
+        for (int i = 6 ; i <  8; ) {
             x = (int)Math.floor(Math.random()*15);
             y = (int)Math.floor(Math.random()*14);
-            for (int j = 0 ; j < 15 ; j++) {
-                for (int k = 0 ; k < 15 ; k++) {
-                    if (!resultado[x][y].getClass().getName().equals("pmodelo.PiezaBarco")) {
-                        resultado[x][y] = b[i].getPiezaBarco()[0];
-                        resultado[x][y+1] = b[i].getPiezaBarco()[1];
-                        i++;
-                    }
-                }
+            
+            if (!resultado[x][y].getClass().getName().equals("pmodelo.PiezaBarco")
+                    && !resultado[x][y+1].getClass().getName().equals("pmodelo.PiezaBarco")) {
+                resultado[x][y] = b[i].getPiezaBarco()[0];
+                resultado[x][y+1] = b[i].getPiezaBarco()[1];
+                i++;
+                    
             }
         }
         
         for (int i = 0 ; i < 6;) {
             x = (int)Math.floor(Math.random()*15);
             y = (int)Math.floor(Math.random()*15);
-            for (int j = 0 ; j < 15 ; j++) {
-                for (int k = 0 ; k < 15 ; k++) {
-                    if (!resultado[x][y].getClass().getName().equals("pmodelo.PiezaBarco")) {
-                        resultado[x][y] = b[i].getPiezaBarco()[0];
-                        i++;
-                    }
-                }
+            
+            if (!resultado[x][y].getClass().getName().equals("pmodelo.PiezaBarco")) {
+                resultado[x][y] = b[i].getPiezaBarco()[0];
+                i++;
+                    
             }
         }
         return resultado;
@@ -167,14 +210,14 @@ public class LogicaJuego {
             if(todosMuertos1 || todosMuertos2 || t.getDisparo().getTicks() == 0) {
                 t.repaint();
                 if (todosMuertos1) {
-                    x.finalizar(ventana, t, Mvtos,0);
+                    graficos.finalizar(ventana, t, Mvtos,0);
                     if (t.getDisparo().getPuntaje() < 15){
                         pun.runFile();
                         pun.savePuntaje("El puntaje es: " + Integer.toString(t.getDisparo().getPuntaje()));
                     }
                     this.setEjecutar(false);
                 } else if (todosMuertos2) {
-                    x.finalizar(ventana, t, Mvtos, 1);
+                    graficos.finalizar(ventana, t, Mvtos, 1);
                     this.setEjecutar(false);
                 } else if (t.getDisparo().getTicks() == 0) {
                     for (int i = 0; i < jugador.length; i++) {
@@ -182,7 +225,7 @@ public class LogicaJuego {
                             jugador[i].getPiezaBarco()[j].Destruido();
                         }
                     }
-                    x.finalizar(ventana, t, Mvtos, 2);
+                    graficos.finalizar(ventana, t, Mvtos, 2);
                     this.setEjecutar(false);
                 } 
             } 

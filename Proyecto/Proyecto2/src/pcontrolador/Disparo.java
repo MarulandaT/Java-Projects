@@ -37,13 +37,11 @@ public class Disparo {
             } else if ((int)matriz2[conversionx][conversiony] == 0) {
                 matriz2[conversionx][conversiony] = 1;
                 dalePlay("bombamal");
-
             } else if (matriz2[conversionx][conversiony].getClass().getName().equals("pmodelo.PiezaBarco")
                     && ((PiezaBarco)matriz2[conversionx][conversiony]).pDestruida()) {
                  ((PiezaBarco)matriz2[conversionx][conversiony]).Destruido();
                 System.out.println(conversionx+" "+conversiony);
-
-            }
+            } 
             
         this.ticks--;
         this.puntaje++;

@@ -14,15 +14,22 @@ import pmodelo.PiezaBarco;
  * @author l_mar
  */
 public class Disparo {
-    private int ticks = 4;
-    private int puntaje = 0;
-    private Clip clip;
-    private final String path = "/pcontrolador/";
+    private int ticks = 50; //Numero de movimientos con el que se inicializa el juego
+    private int puntaje = 0; //Puntos Acumulados
+    private Clip clip; //Sonido por emitir
+    private final String path = "/pcontrolador/"; //Ruta para el sonido
     
     
     public Disparo(){
     }
     
+    /**
+     * Verificar que ha pasado en el tablero tras dar un 'disparo'.
+     * @param matriz1
+     * @param matriz2
+     * @param px
+     * @param py 
+     */
     public void Actualizar(Object[][] matriz1, Object[][] matriz2, int px, int py) {
         int conversionx;
         int conversiony;
@@ -49,6 +56,10 @@ public class Disparo {
         }
     }
     
+    /**
+     * Darle el turno al pc pasandole la matriz que le corresponde
+     * @param matriz 
+     */
     public void esTurnoPc(Object[][] matriz) {
         int pcx = (int)(Math.random() * 15);
         int pcy = (int)(Math.random() * 15);
@@ -68,14 +79,26 @@ public class Disparo {
         
     }
     
+    /**
+     * Obtener los movimientos restantes
+     * @return 
+     */
     public int getTicks() {
         return this.ticks;
     }
   
+    /**
+     * Obtener el puntaje que se ha obtenido
+     * @return 
+     */
     public int getPuntaje(){
         return this.puntaje;
     }
     
+    /**
+     * Sonar cuando se dispare
+     * @param value 
+     */
     public void dalePlay(String value){
         try{
             clip = AudioSystem.getClip();

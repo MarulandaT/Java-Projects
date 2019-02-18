@@ -21,11 +21,13 @@ public class MenuPpal {
     private JButton Salir;
     private volatile boolean EsVisible;
     
+    //Inicializar la ventana
     public MenuPpal(JFrame forma){
         Ventana = forma;
         EsVisible = true;
     }
 
+    //Cargar los elementos en el titulo
     public void loadTitleScreen() {
         int tbx = 200;
         int tby = 40;
@@ -102,6 +104,7 @@ public class MenuPpal {
         Ventana.setVisible(true);
     }
     
+    //Determinar si el menu esta visible 
     public boolean EsVVisible(){
         return EsVisible;
     }

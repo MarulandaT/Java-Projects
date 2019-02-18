@@ -192,18 +192,18 @@ public class LogicaJuego {
             boolean todosMuertos2 = true;
             
             for (int i = 0; i < jugador.length; i++) {
-                for (int j = 0; j < jugador[i].getPiezaBarco().length; j++) {
-                    if ( !jugador[i].getPiezaBarco()[j].pDestruida()) {
+                
+                    if ( !jugador[i].verificarVida()) {
                        todosMuertos1 = false; 
-                    }
+                    
                 }
             }
             
             for (int i = 0; i < pc.length; i++) {
-                for (int j = 0; j < pc[i].getPiezaBarco().length; j++) {
-                    if ( !pc[i].getPiezaBarco()[j].pDestruida()) {
-                       todosMuertos2 = false; 
-                    }
+                
+                if ( !pc[i].verificarVida()) {
+                   todosMuertos2 = false; 
+                    
                 }
             }
             

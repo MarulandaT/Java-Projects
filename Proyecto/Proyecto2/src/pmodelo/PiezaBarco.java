@@ -11,10 +11,11 @@ import javax.swing.ImageIcon;
  * @author l_mar
  */
 public class PiezaBarco {
-    private Image PiezaSana;
-    private boolean PiezaMuerta;
-    boolean EsJugador1;
+    private Image PiezaSana; //imagen de la pieza que no ha sido atacada
+    private boolean PiezaMuerta; //imagen de la pieza atacada
+    boolean EsJugador1; //determinar de que jugador se trata 
 
+    //Construir una pieza en base a que jugador es
     public PiezaBarco(boolean EsJugador1) {
         this.EsJugador1 = EsJugador1;
         
@@ -25,14 +26,17 @@ public class PiezaBarco {
         PiezaMuerta = false;
     }
     
+    //Cambiar la imagen de la pieza, por ejemplo cuando le disparan
     public void setBarcoImage(String file) {
         PiezaSana = new ImageIcon(file).getImage();
     }
     
+    //Obtener la imagen de la pieza
     public Image getShipImage() {
         return PiezaSana;
     }
     
+    //Cuando la pieza se destruye su imagen cambia
     public void Destruido() {
         PiezaMuerta = true;
         if(EsJugador1) {
@@ -42,6 +46,7 @@ public class PiezaBarco {
         }
     }
     
+    //Verificar si una pieza esta destruida 
     public boolean pDestruida() {
         return PiezaMuerta;
     }

@@ -22,6 +22,11 @@ public class GuardarPuntaje {
         return true;
     }
     
+    /**
+     * Escribir el puntaje en el archivo que se tiene destinado
+     * @param puntaje
+     * @throws Exception 
+     */
     public void savePuntaje (String puntaje) throws Exception{
         try {
             FileOutputStream fos = new FileOutputStream(Informacion,true);

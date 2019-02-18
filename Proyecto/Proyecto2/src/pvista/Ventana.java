@@ -17,6 +17,7 @@ import javax.swing.JLabel;
 public class Ventana extends JFrame{
     public  JFrame vJuego;
     
+    //Darle dimensiones graficas a la ventana 
     public void DimensionVentana(JFrame ventana) {
         vJuego = ventana;
         vJuego.getContentPane().setLayout(null);
@@ -32,6 +33,7 @@ public class Ventana extends JFrame{
     public Ventana() {
     }
     
+    //Cargar todo elemento grafico en la ventana 
     public void CargarElementos(JFrame ventana, Tablero t, JLabel nMovimientos) {
         
         JLabel info = new JLabel();
@@ -60,6 +62,7 @@ public class Ventana extends JFrame{
         ventana.setVisible(true);
     }
     
+    //Pintar el fin del juego.
     public void finalizar(JFrame v, Tablero t, JLabel m, int caso) {
         JLabel res = new JLabel();
         m.setText("Movimientos restantes: " + Integer.toString(0));

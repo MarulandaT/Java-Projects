@@ -23,21 +23,21 @@ public class Tablero extends JPanel implements MouseListener{
     private Disparo disparo = new Disparo(); 
     
     /*
-    * Default constructor. Uses an empty array
+    * Cuando no hay una matriz para el arreglo
     */
    public Tablero() {
            this(new Object[15][15], new Object[15][15], "gridLabels.png");
    }
 
    /*
-    * Constructor that takes an array
+    * Cuando conozco la matriz de ambos jugadores
     */
    public Tablero(Object[][] arr, Object[][] arr2) {
            this(arr, arr2, "gridLabels.png");
    }
 
    /*
-    * constructor that takes an array and a file path.
+    * Cuando conozco la matriz de los jugadores y la ruta de imagen
     */
    public Tablero(Object[][] arr, Object[][] arr2, String path) {
            matriz = arr;
@@ -127,6 +127,10 @@ public class Tablero extends JPanel implements MouseListener{
         
     }
     
+    /**
+     * Obtener el disparo que se ha dado en este tablero 
+     * @return 
+     */
     public Disparo getDisparo() {
         return this.disparo;
     }

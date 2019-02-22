@@ -3,12 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modelo;
+package controlador;
 
-import controlador.GestionArchivos;
 import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
+import modelo.ListPersonas;
+import modelo.ListPrestamos;
+import modelo.Persona;
+import modelo.Prestamo;
 import vista.Graficos;
 
 /**
@@ -28,7 +31,6 @@ public class Logica {
      * se me da la orden de generar nuevo prestamo.
      * 
      * @param EstPrestamo
-     * @param doc
      * @param VaPrestar
      * @param g
      * @throws ParseException 

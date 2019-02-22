@@ -7,7 +7,6 @@ package controlador;
 
 import java.text.ParseException;
 import vista.Graficos;
-import modelo.Logica;
 /**
  *
  * @author l_mar

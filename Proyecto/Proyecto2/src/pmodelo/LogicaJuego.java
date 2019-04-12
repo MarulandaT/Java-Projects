@@ -211,7 +211,7 @@ public class LogicaJuego {
                 t.repaint();
                 if (todosMuertos1) {
                     graficos.finalizar(ventana, t, Mvtos,0);
-                    if (t.getDisparo().getPuntaje() < 15){
+                    if (t.getDisparo().getPuntaje() < 50){
                         pun.runFile();
                         pun.savePuntaje("El puntaje es: " + Integer.toString(t.getDisparo().getPuntaje()));
                     }
